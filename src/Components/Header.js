@@ -2,11 +2,9 @@ import React from 'react'
 
 import '../Styles/Heading.css'
 import '../App'
-import { Link } from 'react-router-dom'
 
 
-export default function Header() {
-
+export default function Header({ selectCategory }) {
 
     return (
         <div className='heading'>
@@ -14,13 +12,13 @@ export default function Header() {
 
             <div className='heading__nav'>
                 <ul className='main-list'>
-                    <Link to={`/news/category/all`}><li className='list-item'><button>All</button></li></Link>
-                    <Link to={`/news/category/business`}><li className='list-item'><button>Business</button></li></Link>
-                    <Link to={`/news/category/sports`}> <li className='list-item'><button>Sports</button></li></Link>
-                    <Link to={`/news/category/worlds`}><li className='list-item'><button>World</button></li> </Link>
-                    <Link to={`/news/category/technology`}><li className='list-item'><button>Technology</button></li></Link>
-                    <Link to={`/news/category/entertainment`}><li className='list-item'><button>Entertainment</button></li></Link>
-                    <Link to={`/news/category/science`}> <li className='list-item'><button>Science</button></li></Link>
+                    <li className='list-item'><button onClick={() => selectCategory('all')}>All</button></li>
+                    <li className='list-item'><button onClick={() => selectCategory('business')}>Business</button></li>
+                    <li className='list-item'><button onClick={() => selectCategory('sports')}>Sports</button></li>
+                    <li className='list-item'><button onClick={() => selectCategory('world')}>World</button></li>
+                    <li className='list-item'><button onClick={() => selectCategory('technology')}>Technology</button></li>
+                    <li className='list-item'><button onClick={() => selectCategory('entertainment')}>Entertainment</button></li>
+                    <li className='list-item'><button onClick={() => selectCategory('science')}>Science</button></li>
                 </ul>
 
             </div>

@@ -7,20 +7,26 @@ import union from '../Photos/Union.png'
 import user from '../Photos/User.png'
 
 
-export default function Content() {
+export default function Content({ currentCategory }) {
     const [data, setData] = useState([])
 
+
+
     useEffect(() => {
-        axios.get('https://inshorts.deta.dev/news?category=all')
+        axios.get(`https://inshorts.deta.dev/news?category=${currentCategory}`)
             .then(res => setData(res.data.data))
             .catch(err => console.log(err))
-    }, [])
+    }, [currentCategory])
+
+    const newData = data.filter((item, index) => {
+        return index < 6
+    })
 
     return (
         <div className='content'>
             <div className='main-content'>
                 {
-                    data.map(post => (
+                    newData.map(post => (
                         <div key={post.id} div className='current-news-card'>
                             <div className='card-head'>
                                 <img alt='back' src={post.imageUrl} />
