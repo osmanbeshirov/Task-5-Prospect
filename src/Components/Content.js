@@ -27,7 +27,7 @@ export default function Content({ currentCategory }) {
             <div className='main-content'>
                 {
                     newData.map(post => (
-                        <div key={post.id} div className='current-news-card'>
+                        <div key={post.id} className='current-news-card'>
                             <div className='card-head'>
                                 <img alt='back' src={post.imageUrl} />
                             </div>
