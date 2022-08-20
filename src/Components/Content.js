@@ -10,8 +10,6 @@ import user from '../Photos/User.png'
 export default function Content({ currentCategory }) {
     const [data, setData] = useState([])
 
-
-
     useEffect(() => {
         axios.get(`https://inshorts.deta.dev/news?category=${currentCategory}`)
             .then(res => setData(res.data.data))
@@ -21,6 +19,8 @@ export default function Content({ currentCategory }) {
     const newData = data.filter((item, index) => {
         return index < 6
     })
+
+    console.log(newData)
 
     return (
         <div className='content'>

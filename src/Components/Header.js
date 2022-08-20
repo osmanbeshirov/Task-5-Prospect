@@ -1,10 +1,13 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
+
 import '../Styles/Heading.css'
 import '../App'
 
 
-export default function Header({ selectCategory }) {
+export default function Header({ selectCategory, currentCategory }) {
+
 
     return (
         <div className='heading'>
@@ -12,13 +15,13 @@ export default function Header({ selectCategory }) {
 
             <div className='heading__nav'>
                 <ul className='main-list'>
-                    <li className='list-item'><button onClick={() => selectCategory('all')}>All</button></li>
-                    <li className='list-item'><button onClick={() => selectCategory('business')}>Business</button></li>
-                    <li className='list-item'><button onClick={() => selectCategory('sports')}>Sports</button></li>
-                    <li className='list-item'><button onClick={() => selectCategory('world')}>World</button></li>
-                    <li className='list-item'><button onClick={() => selectCategory('technology')}>Technology</button></li>
-                    <li className='list-item'><button onClick={() => selectCategory('entertainment')}>Entertainment</button></li>
-                    <li className='list-item'><button onClick={() => selectCategory('science')}>Science</button></li>
+                    <Link className='list-item' to={`/${currentCategory}`}><li><button onClick={() => selectCategory('all')}>All</button></li></Link>
+                    <Link className='list-item' to={`/${currentCategory}`}><li><button onClick={() => selectCategory('business')}>Business</button></li></Link>
+                    <Link className='list-item' to={`/${currentCategory}`}><li ><button onClick={() => selectCategory('sports')}>Sports</button></li></Link>
+                    <Link className='list-item' to={`/${currentCategory}`}><li ><button onClick={() => selectCategory('world')}>World</button></li></Link>
+                    <Link className='list-item' to={`/${currentCategory}`}><li ><button onClick={() => selectCategory('technology')}>Technology</button></li></Link>
+                    <Link className='list-item' to={`/${currentCategory}`}><li ><button onClick={() => selectCategory('entertainment')}>Entertainment</button></li></Link>
+                    <Link className='list-item' to={`/${currentCategory}`}><li ><button onClick={() => selectCategory('science')}>Science</button></li></Link>
                 </ul>
 
             </div>

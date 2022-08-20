@@ -30,6 +30,10 @@
     justify-content: space-evenly;
 }
 
+.list-item {
+    text-decoration: none;
+}
+
 .list-item button {
     height: 2.6rem;
     padding: 0 1.5rem;
