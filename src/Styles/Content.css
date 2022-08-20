@@ -34,8 +34,8 @@
 
 .card-body {
     padding: 15px;
-    
-    
+
+
 }
 
 .card-body__title {
@@ -61,6 +61,8 @@
 .card-footer {
     padding: 0 15px 0 15px;
     display: flex;
+    position: absolute;
+    bottom: 15px;
 }
 
 .card-footer__info {

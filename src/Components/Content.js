@@ -27,7 +27,9 @@ export default function Content({ currentCategory }) {
             <div className='main-content'>
                 {
                     newData.map(post => (
+
                         <div key={post.id} className='current-news-card'>
+
                             <div className='card-head'>
                                 <img alt='back' src={post.imageUrl} />
                             </div>
@@ -37,7 +39,8 @@ export default function Content({ currentCategory }) {
                                 </p>
                                 <hr className='card-body__line' />
                                 <p className='card-body__content'>
-                                    {post.content}
+
+                                    {post.content.slice(0, 250)}
                                 </p>
                             </div>
                             <div className='card-footer'>
@@ -52,7 +55,6 @@ export default function Content({ currentCategory }) {
                             </div>
                         </div>
                     ))
-
                 }
 
             </div>

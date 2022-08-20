@@ -6,8 +6,9 @@ import '../Styles/Heading.css'
 import '../App'
 
 
-export default function Header({ selectCategory, currentCategory }) {
+export default function Header({ selectCategory, yeniPat }) {
 
+    console.log(yeniPat)
 
     return (
         <div className='heading'>
@@ -15,15 +16,14 @@ export default function Header({ selectCategory, currentCategory }) {
 
             <div className='heading__nav'>
                 <ul className='main-list'>
-                    <Link className='list-item' to={`/${currentCategory}`}><li><button onClick={() => selectCategory('all')}>All</button></li></Link>
-                    <Link className='list-item' to={`/${currentCategory}`}><li><button onClick={() => selectCategory('business')}>Business</button></li></Link>
-                    <Link className='list-item' to={`/${currentCategory}`}><li ><button onClick={() => selectCategory('sports')}>Sports</button></li></Link>
-                    <Link className='list-item' to={`/${currentCategory}`}><li ><button onClick={() => selectCategory('world')}>World</button></li></Link>
-                    <Link className='list-item' to={`/${currentCategory}`}><li ><button onClick={() => selectCategory('technology')}>Technology</button></li></Link>
-                    <Link className='list-item' to={`/${currentCategory}`}><li ><button onClick={() => selectCategory('entertainment')}>Entertainment</button></li></Link>
-                    <Link className='list-item' to={`/${currentCategory}`}><li ><button onClick={() => selectCategory('science')}>Science</button></li></Link>
+                    <Link className='list-item' to={`/${yeniPat}`}><li><button onClick={() => selectCategory('all')}>All</button></li></Link>
+                    <Link className='list-item' to={`/${yeniPat}`}><li><button onClick={() => selectCategory('business')}>Business</button></li></Link>
+                    <Link className='list-item' to={`/${yeniPat}`}><li ><button onClick={() => selectCategory('sports')}>Sports</button></li></Link>
+                    <Link className='list-item' to={`/${yeniPat}`}><li ><button onClick={() => selectCategory('world')}>World</button></li></Link>
+                    <Link className='list-item' to={`/${yeniPat}`}><li ><button onClick={() => selectCategory('technology')}>Technology</button></li></Link>
+                    <Link className='list-item' to={`/${yeniPat}`}><li ><button onClick={() => selectCategory('entertainment')}>Entertainment</button></li></Link>
+                    <Link className='list-item' to={`/${yeniPat}`}><li ><button onClick={() => selectCategory('science')}>Science</button></li></Link>
                 </ul>
-
             </div>
         </div>
     )

@@ -12,10 +12,12 @@ function App() {
     setCategory(categoryName)
   }
 
+
+
   return (
     <div>
       <div className='container'>
-        <Header selectCategory={selectCategory} currentCategory={category} />
+        <Header selectCategory={selectCategory} yeniPat={category} />
         <Routes>
           <Route path='/' element={<Content currentCategory={category} />} />
           <Route path={`/${category}`} element={<Content currentCategory={category} />} />
