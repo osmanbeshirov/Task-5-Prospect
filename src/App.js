@@ -14,7 +14,7 @@ function App() {
   return (
     <div>
       <div className='container'>
-        <Header selectCategory={selectCategory} />
+        <Header selectCategory={selectCategory}  />
         <Content currentCategory={category} />
       </div>
     </div>
