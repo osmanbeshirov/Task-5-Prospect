@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 import '../Styles/Content.css'
 
@@ -8,7 +8,7 @@ import union from '../Photos/Union.png'
 import user from '../Photos/User.png'
 
 
-export default function Content({ currentCategory }) {
+export default function Content({ currentCategory, sendToCurrentPost }) {
     const [data, setData] = useState([])
 
     const params = useParams()
@@ -27,17 +27,20 @@ export default function Content({ currentCategory }) {
     const newData = data.filter((item, index) => {
         return index < 6
     })
-    
+
     return (
         <div className='content'>
+
             <div className='main-content'>
                 {
                     newData.map(post => (
 
-                        <div key={post.id} className='current-news-card'>
+                        <div key={post.id} className='current-news-card' >
 
                             <div className='card-head'>
-                                <img alt='back' src={post.imageUrl} />
+                                <Link to={`/${params.category}/${post.id}`}>
+                                    <img alt='back' src={post.imageUrl} onClick={() => sendToCurrentPost(post)} />
+                                </Link>
                             </div>
                             <div className='card-body'>
                                 <p className='card-body__title'>
@@ -60,6 +63,8 @@ export default function Content({ currentCategory }) {
                                 </div>
                             </div>
                         </div>
+
+
                     ))
                 }
 

@@ -1,9 +1,18 @@
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Content from './Components/Content';
 import Header from './Components/Header';
+import NewsDetail from './Components/NewsDetail';
 import './Styles/App.css'
 
 function App() {
+
+  const [currentNews, setCurrentNews] = useState();
+
+  const sendPost = (post) => {
+    setCurrentNews(post)
+  }
+
 
   return (
     <div>
@@ -11,9 +20,12 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Content currentCategory={'all'} />} />
-          <Route path='/:category' element={<Content />} />
-        </Routes>
 
+          <Route path='/:category' element={<Content sendToCurrentPost={sendPost} />} />
+
+          <Route path={'/:category/:postId'} element={<NewsDetail currentPost={currentNews} sendToCurrentPost={sendPost} />} />
+
+        </Routes>
 
       </div>
     </div>
