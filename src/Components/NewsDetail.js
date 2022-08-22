@@ -72,7 +72,12 @@ export default function NewsDetail({ currentPost, sendToCurrentPost }) {
               {
                 newSimilarNews.map(news => (
                   <Link key={news.id} to={`/${params.category}/${news.id}`} style={{ textDecoration: 'none' }}>
-                    <div className='news' onClick={() => sendToCurrentPost(news)} style={{ backgroundImage: `url(${news.imageUrl})` }}>
+                    <div className='news' onClick={() => sendToCurrentPost(news)}
+                      style={{
+                        background: `linear-gradient(0deg,rgba(0, 0, 0, 0.5),rgba(11, 15, 49, 0.5)), url(${news.imageUrl})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                      }}>
                       <p className='news-title'>
                         {news.title}
                       </p>

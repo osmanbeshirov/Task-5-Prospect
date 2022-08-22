@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Content from './Components/Content';
 import Header from './Components/Header';
 import NewsDetail from './Components/NewsDetail';
@@ -18,8 +18,9 @@ function App() {
     <div>
       <div className='container'>
         <Header />
+
         <Routes>
-          <Route path='/' element={<Content currentCategory={'all'} />} />
+          <Route path='/' element={<Navigate to='/all' />} />
 
           <Route path='/:category' element={<Content sendToCurrentPost={sendPost} />} />
 

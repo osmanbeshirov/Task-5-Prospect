@@ -8,21 +8,19 @@ import union from '../Photos/Union.png'
 import user from '../Photos/User.png'
 
 
-export default function Content({ currentCategory, sendToCurrentPost }) {
+export default function Content({ sendToCurrentPost }) {
     const [data, setData] = useState([])
 
     const params = useParams()
 
     useEffect(() => {
-        const defaultApiUrl = `https://inshorts.deta.dev/news?category=${currentCategory}`
+
         const categoryApiUrl = `https://inshorts.deta.dev/news?category=${params.category}`
 
-        let paramsNumber = Object.keys(params).length
-
-        axios.get(paramsNumber > 0 ? categoryApiUrl : defaultApiUrl)
+        axios.get(categoryApiUrl)
             .then(res => setData(res.data.data))
             .catch(err => console.log(err))
-    }, [currentCategory, params])
+    }, [ params])
 
     const newData = data.filter((item, index) => {
         return index < 6
