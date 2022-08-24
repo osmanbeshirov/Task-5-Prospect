@@ -13,7 +13,6 @@ function App() {
     setCurrentNews(post)
   }
 
-
   return (
     <div>
       <div className='container'>
@@ -24,8 +23,9 @@ function App() {
 
           <Route path='/:category' element={<Content sendToCurrentPost={sendPost} />} />
 
-          <Route path={'/:category/:postId'} element={<NewsDetail currentPost={currentNews} sendToCurrentPost={sendPost} />} />
-
+          <Route path={'/:category/:postId'} element={<NewsDetail
+            currentPost={currentNews}
+            sendToCurrentPost={sendPost} />} />
         </Routes>
 
       </div>

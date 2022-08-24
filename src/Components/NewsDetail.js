@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 
 import '../Styles/NewsDetail.css'
 import '../Styles/Content.css'
@@ -17,52 +17,70 @@ export default function NewsDetail({ currentPost, sendToCurrentPost }) {
 
   const params = useParams()
 
+  const navigate = useNavigate()
+
   const [similarNews, setSimilarNews] = useState([])
 
   useEffect(() => {
     axios.get(`https://inshorts.deta.dev/news?category=${params.category}`)
       .then(res => setSimilarNews(res.data.data))
       .catch(err => console.log(err))
-  }, [params])
+    if (!currentPost) {
+      navigate('/all', { replace: true })
+    }
+  }, [params, currentPost, navigate])
 
   const newSimilarNews = similarNews.filter((item, index) => {
     return index < 3
   })
+
+
+  const renderMyCurrentPost = () => {
+    return (
+      <div className='card-detail'>
+        <div className='left-section'>
+          <div className='left-section__image' style={{ backgroundImage: `url(${currentPost.imageUrl})` }}></div>
+
+          <div className='status'>
+            <div className='card-footer__info'>
+              <img alt='icon' src={union} />
+              <span>{currentPost.date}</span>
+            </div>
+
+            <div className='card-footer__info'>
+              <img alt='icon' src={user} />
+              <span>{currentPost.author}</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div className='right-section'>
+          <h3 className='post-title'>
+            {currentPost.title}
+          </h3>
+
+          <hr className='card-title-line' />
+          <div className='post-content'>
+            <p>
+              {currentPost.content}
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+
   return (
     <div className='card-detail-container'>
 
       <div className='card-detail--cover'>
-        <div className='card-detail'>
-          <div className='left-section'>
-            <div className='left-section__image' style={{ backgroundImage: `url(${currentPost.imageUrl})` }}></div>
 
-            <div className='status'>
-              <div className='card-footer__info'>
-                <img alt='icon' src={union} />
-                <span>{currentPost.date}</span>
-              </div>
+        {
+          currentPost ? renderMyCurrentPost() : null
+        }
 
-              <div className='card-footer__info'>
-                <img alt='icon' src={user} />
-                <span>{currentPost.author}</span>
-              </div>
-
-            </div>
-          </div>
-
-          <div className='right-section'>
-            <h3 className='post-title'>
-              {currentPost.title}
-            </h3>
-
-            <hr className='card-title-line' />
-            <div className='post-content'>
-              <p>
-                {currentPost.content}
-              </p>
-            </div>
-          </div>
-        </div>
 
         <div className='similar-news-container'>
           <div className='similar-news'>
@@ -97,9 +115,6 @@ export default function NewsDetail({ currentPost, sendToCurrentPost }) {
                   </Link>
                 ))
               }
-
-
-
 
             </div>
           </div>
